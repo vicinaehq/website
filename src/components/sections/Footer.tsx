@@ -1,7 +1,24 @@
-import { getContributorCount, CONTRIBUTORS_URL } from "@/lib/github";
+"use client";
 
-export async function Footer() {
-  const contributorCount = await getContributorCount();
+import { CONTRIBUTORS_URL } from "@/lib/github";
+import { useEffect, useState } from "react";
+
+export function Footer() {
+  const [contributorCount, setContributorCount] = useState(0);
+
+  useEffect(() => {
+    fetch("https://api.github.com/repos/vicinaehq/vicinae/contributors?per_page=1&anon=true")
+      .then((res) => {
+        const link = res.headers.get("link");
+        if (link) {
+          const match = link.match(/page=(\d+)>; rel="last"/);
+          if (match) {
+            setContributorCount(parseInt(match[1], 10));
+          }
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   return (
     <footer className="border-t border-zinc-200 dark:border-[#2A2A2A] bg-white dark:bg-[#121212]">
