@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui";
-import { siteConfig } from "@/data/landing";
+import { Button, Badge } from "@/components/ui";
+import { siteConfig, platforms } from "@/data/landing";
 import { EXTERNAL_LINKS } from "@/lib/constants";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -80,7 +80,25 @@ export function Hero() {
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: 0.3 }}
+						transition={{ duration: 0.5, delay: 0.25 }}
+						className="mt-6"
+					>
+						<p className="text-sm text-zinc-500 dark:text-zinc-500 mb-3">
+							Works on all major Linux environments
+						</p>
+						<div className="flex flex-wrap items-center justify-center gap-2">
+							{platforms.map((platform) => (
+								<Badge key={platform.name} variant="secondary">
+									{platform.name}
+								</Badge>
+							))}
+						</div>
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: 0.35 }}
 						className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
 					>
 						<Button size="lg" asChild>
@@ -103,7 +121,7 @@ export function Hero() {
 				<motion.div
 					initial={{ opacity: 0, y: 40 }}
 					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7, delay: 0.4 }}
+					transition={{ duration: 0.7, delay: 0.5 }}
 					className="mt-16 sm:mt-20"
 				>
 					<div className="relative mx-auto max-w-4xl aspect-[1249/787]">

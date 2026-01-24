@@ -1,7 +1,6 @@
 "use client";
 
-import { Button, Badge } from "@/components/ui";
-import { platforms } from "@/data/landing";
+import { Button } from "@/components/ui";
 import { EXTERNAL_LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
 
@@ -59,25 +58,6 @@ export function Community() {
 								Join Discord
 							</a>
 						</Button>
-					</motion.div>
-
-					<motion.div
-						initial={{ opacity: 0, y: 20 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.3 }}
-						className="mt-16"
-					>
-						<p className="text-sm text-zinc-500 dark:text-zinc-500 mb-4">
-							Works on all major Linux platforms
-						</p>
-						<div className="flex flex-wrap items-center justify-center gap-3">
-							{platforms.map((platform) => (
-								<Badge key={platform.name} variant="secondary">
-									{platform.name}
-								</Badge>
-							))}
-						</div>
 					</motion.div>
 				</div>
 			</div>
