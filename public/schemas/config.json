@@ -70,6 +70,14 @@
         }
       }
     },
+    "telemetry": {
+      "type": "object",
+      "properties": {
+        "system_info": {
+          "type": "boolean"
+        }
+      }
+    },
     "launcher_window": {
       "type": "object",
       "properties": {
