@@ -19,6 +19,7 @@ const kalam = Kalam({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vicinae.com"),
   title: "Vicinae - The everything launcher for Linux",
   description:
     "Launch apps, search files, manage your clipboard, run calculations, and so much more. Extend it with React & TypeScript.",
@@ -40,6 +41,14 @@ export const metadata: Metadata = {
     url: "https://vicinae.com",
     siteName: "Vicinae",
     type: "website",
+    images: [
+      {
+        url: "/images/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Vicinae - The everything launcher for Linux"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
