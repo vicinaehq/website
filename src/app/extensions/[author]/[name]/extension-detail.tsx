@@ -145,7 +145,7 @@ export function ExtensionDetail({
 
         <div className="flex flex-col lg:flex-row gap-10">
           <aside className="lg:w-[280px] shrink-0">
-            <div className="lg:sticky lg:top-24 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto space-y-6 animate-fade-in" style={{ animationDelay: "50ms" }}>
+            <div className="lg:sticky lg:top-24 space-y-6 animate-fade-in" style={{ animationDelay: "50ms" }}>
               <div className="flex items-start gap-4">
                 <ExtensionIcon src={ext.icons.dark} title={ext.title} />
                 <div className="min-w-0">

@@ -187,7 +187,8 @@ function ExtensionCard({ ext, index }: { ext: Extension; index: number }) {
           <h3 className="text-[15px] font-medium text-stone-200 truncate group-hover:text-sand-200 transition-colors">
             {ext.title}
           </h3>
-          <span className="text-xs text-stone-500 group-hover:text-stone-400 transition-colors">
+          <span className="text-xs text-stone-500 group-hover:text-stone-400 transition-colors inline-flex items-center gap-1.5">
+            <Image src={ext.author.avatarUrl} alt={ext.author.handle} width={14} height={14} className="w-3.5 h-3.5 rounded-full" />
             {ext.author.name || ext.author.handle}
           </span>
         </div>
@@ -200,18 +201,16 @@ function ExtensionCard({ ext, index }: { ext: Extension; index: number }) {
         {ext.description}
       </p>
 
-      {ext.categories.length > 0 && (
-        <div className="mt-3 flex items-center gap-1.5 flex-wrap">
-          {ext.categories.slice(0, 2).map((cat) => (
-            <span
-              key={cat.id}
-              className="text-[10px] text-sage-400/60 bg-sage-700/10 rounded-md px-1.5 py-0.5 leading-tight"
-            >
-              {cat.name}
-            </span>
-          ))}
-        </div>
-      )}
+      <div className="mt-3 flex items-center gap-1.5 flex-wrap min-h-[20px]">
+        {ext.categories.slice(0, 2).map((cat) => (
+          <span
+            key={cat.id}
+            className="text-[10px] text-sage-400/60 bg-sage-700/10 rounded-md px-1.5 py-0.5 leading-tight"
+          >
+            {cat.name}
+          </span>
+        ))}
+      </div>
 
       <div className="relative z-10 mt-4 pt-3.5 border-t border-sand-700/6 flex items-center gap-2">
         <a
