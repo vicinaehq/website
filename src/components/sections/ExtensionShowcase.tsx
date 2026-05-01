@@ -1,85 +1,79 @@
 "use client";
 
 import { Button } from "@/components/ui";
-import { EXTERNAL_LINKS } from "@/lib/constants";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 export function ExtensionShowcase() {
-	return (
-		<section id="extensions" className="py-20 sm:py-32">
-			<div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.5 }}
-					className="text-center max-w-3xl mx-auto"
-				>
-					<h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-[#E8E6E1]">
-						Build your own extensions
-					</h2>
-					<p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-						Create powerful extensions with React and TypeScript. No web browser involved.
-					</p>
+  return (
+    <section id="extensions" className="py-24 sm:py-32 bg-ink-800/50">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-2xl mx-auto"
+        >
+          <h2 className="text-2xl sm:text-3xl text-stone-200">
+            Build your own
+          </h2>
+          <p className="mt-4 text-stone-400">
+            Write extensions with React and TypeScript. Your code becomes native
+            UI — no browser involved.
+          </p>
 
-					<div className="mt-8 flex flex-wrap justify-center gap-4">
-						<Button asChild>
-							<a
-								href="https://docs.vicinae.com/extensions/introduction"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Get Started
-							</a>
-						</Button>
-						<Button variant="secondary" asChild>
-							<a
-								href={EXTERNAL_LINKS.extensions}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								Browse Extensions
-							</a>
-						</Button>
-					</div>
-				</motion.div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button
+              href="https://docs.vicinae.com/extensions/introduction"
+              external
+            >
+              Documentation
+            </Button>
+            <Button
+              variant="secondary"
+              href="/extensions"
+            >
+              Browse Extensions
+            </Button>
+          </div>
+        </motion.div>
 
-				<div className="relative mt-12 sm:mt-16 h-[500px] sm:h-[600px] lg:h-[700px]">
-					<motion.div
-						initial={{ opacity: 0, x: -40 }}
-						whileInView={{ opacity: 1, x: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.1 }}
-						className="absolute left-0 top-0 w-[75%] lg:w-[65%] z-10"
-					>
-						<Image
-							src="/images/code.png"
-							alt="Extension code example"
-							width={1000}
-							height={700}
-							className="w-full h-auto rounded-xl shadow-2xl"
-							quality={95}
-						/>
-					</motion.div>
-					<motion.div
-						initial={{ opacity: 0, x: 40 }}
-						whileInView={{ opacity: 1, x: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.5, delay: 0.25 }}
-						className="absolute -right-8 lg:-right-12 bottom-0 w-[70%] lg:w-[58%] z-20"
-					>
-						<Image
-							src="/images/code-ui.png"
-							alt="Resulting UI from the extension code"
-							width={800}
-							height={600}
-							className="w-full h-auto drop-shadow-2xl"
-							quality={95}
-						/>
-					</motion.div>
-				</div>
-			</div>
-		</section>
-	);
+        <div className="relative mt-16 h-[450px] sm:h-[550px] lg:h-[650px]">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="absolute left-0 top-0 w-[75%] lg:w-[65%] z-10"
+          >
+            <Image
+              src="/images/code.png"
+              alt="Extension source code"
+              width={1000}
+              height={700}
+              className="w-full h-auto rounded-xl shadow-2xl shadow-black/30"
+              quality={95}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="absolute right-0 bottom-0 w-[65%] lg:w-[55%] z-20"
+          >
+            <Image
+              src="/images/code-ui.png"
+              alt="Resulting extension UI"
+              width={800}
+              height={600}
+              className="w-full h-auto rounded-xl shadow-2xl shadow-black/30"
+              quality={95}
+            />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
 }

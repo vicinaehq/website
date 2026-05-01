@@ -1,8 +1,8 @@
 export const siteConfig = {
 	name: "Vicinae",
-	tagline: "The everything launcher for Linux",
+	tagline: "A focused launcher for your desktop",
 	description:
-		"A focused launcher for your desktop — native, fast, extensible.",
+		"Native, fast, and extensible. Search, launch, and manage your desktop from one place.",
 	links: {
 		github: "https://github.com/vicinaehq/vicinae",
 		discord: "https://discord.com/invite/rP4ecD42p7",
@@ -11,30 +11,29 @@ export const siteConfig = {
 	},
 };
 
-
 export const features = [
 	{
-		title: "Everything at your fingertips",
+		title: "One keystroke away",
 		description:
-			"Apps, files, clipboard, calculator, emoji, and more. One shortcut to access it all.",
+			"Apps, files, clipboard history, calculator, emoji — all accessible from a single shortcut.",
 		icon: "Sparkles",
 	},
 	{
 		title: "Keyboard-first",
 		description:
-			"Fast, efficient, no mouse needed. Navigate, filter, and execute with just your keyboard.",
+			"Navigate, filter, and act without reaching for the mouse. Every action is a few keystrokes away.",
 		icon: "Command",
 	},
 	{
-		title: "Extensible",
+		title: "Extend with TypeScript",
 		description:
-			"Can be extended using the Typescript SDK, script commands, or dmenu compatibility mode.",
+			"Build extensions using React and TypeScript. A familiar API that works like building any other app.",
 		icon: "Puzzle",
 	},
 	{
-		title: "Raycast compatibility",
+		title: "Raycast compatible",
 		description:
-			"Compatible with many Raycast extensions and script commands",
+			"Run many Raycast extensions and script commands out of the box. Bring your macOS workflow to Linux.",
 		icon: "Package",
 	},
 ];
@@ -79,13 +78,5 @@ export default function MyExtension() {
     </List>
   );
 }`;
-
-export const platforms = [
-	{ name: "X11", icon: "x11" },
-	{ name: "Hyprland", icon: "hyprland" },
-	{ name: "GNOME", icon: "gnome" },
-	{ name: "KDE", icon: "kde" },
-	{ name: "Niri", icon: "niri" },
-];
 
 export const installCommand = "curl -fsSL https://vicinae.com/install | sh";

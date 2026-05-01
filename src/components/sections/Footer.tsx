@@ -7,25 +7,25 @@ export function Footer() {
   const [contributorCount, setContributorCount] = useState(0);
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/vicinaehq/vicinae/contributors?per_page=1&anon=true")
+    fetch(
+      "https://api.github.com/repos/vicinaehq/vicinae/contributors?per_page=1&anon=true",
+    )
       .then((res) => {
         const link = res.headers.get("link");
         if (link) {
           const match = link.match(/page=(\d+)>; rel="last"/);
-          if (match) {
-            setContributorCount(parseInt(match[1], 10));
-          }
+          if (match) setContributorCount(parseInt(match[1], 10));
         }
       })
       .catch(() => {});
   }, []);
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-[#2A2A2A] bg-white dark:bg-[#121212]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-        <p className="text-sm text-zinc-500 text-center">
+    <footer className="py-8 border-t border-sand-700/8">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <p className="text-sm text-stone-600 text-center">
           Made with{" "}
-          <span className="text-red-500" aria-label="love">
+          <span className="text-sand-500" aria-label="love">
             ♥
           </span>{" "}
           by{" "}
@@ -33,7 +33,7 @@ export function Footer() {
             href="https://github.com/aurelleb"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors"
+            className="text-stone-500 hover:text-stone-300 transition-colors"
           >
             Aurelle
           </a>{" "}
@@ -42,9 +42,11 @@ export function Footer() {
             href={CONTRIBUTORS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white transition-colors"
+            className="text-stone-500 hover:text-stone-300 transition-colors"
           >
-            {contributorCount > 0 ? `${contributorCount} contributors` : "contributors"}
+            {contributorCount > 0
+              ? `${contributorCount} contributors`
+              : "contributors"}
           </a>
         </p>
       </div>

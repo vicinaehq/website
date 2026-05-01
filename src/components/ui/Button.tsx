@@ -1,41 +1,58 @@
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes, forwardRef } from "react";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost";
+interface ButtonProps {
+  variant?: "primary" | "secondary";
   size?: "sm" | "md" | "lg";
-  asChild?: boolean;
+  href?: string;
+  external?: boolean;
+  className?: string;
+  children: React.ReactNode;
+  onClick?: () => void;
 }
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", size = "md", ...props }, ref) => {
+function Button({
+  variant = "primary",
+  size = "md",
+  href,
+  external,
+  className,
+  children,
+  onClick,
+}: ButtonProps) {
+  const classes = cn(
+    "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all",
+    {
+      "btn-warm": variant === "primary",
+      "border border-sand-700/10 bg-ink-800/50 text-stone-400 hover:text-stone-200 hover:border-sand-600/18 hover:bg-ink-700/50":
+        variant === "secondary",
+    },
+    {
+      "h-8 px-3 text-sm": size === "sm",
+      "h-10 px-5 text-sm": size === "md",
+      "h-12 px-6 text-base": size === "lg",
+    },
+    className,
+  );
+
+  if (href) {
     return (
-      <button
-        ref={ref}
-        className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-          {
-            "bg-orange-500 text-white hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-500":
-              variant === "primary",
-            "bg-zinc-100 text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700":
-              variant === "secondary",
-            "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:text-zinc-100 dark:hover:bg-[#333333]":
-              variant === "ghost",
-          },
-          {
-            "h-8 px-3 text-sm": size === "sm",
-            "h-10 px-4 text-sm": size === "md",
-            "h-12 px-6 text-base": size === "lg",
-          },
-          className
-        )}
-        {...props}
-      />
+      <a
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        className={classes}
+      >
+        {children}
+      </a>
     );
   }
-);
 
-Button.displayName = "Button";
+  return (
+    <button onClick={onClick} className={classes}>
+      {children}
+    </button>
+  );
+}
 
 export { Button };
 export type { ButtonProps };
