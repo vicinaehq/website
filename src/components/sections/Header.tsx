@@ -4,6 +4,7 @@ import { EXTERNAL_LINKS, NAV_LINKS } from "@/lib/constants";
 import { siteConfig } from "@/data/landing";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 function Logo() {
@@ -119,6 +120,7 @@ function GitHubStars() {
 }
 
 export function Header() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -146,8 +148,9 @@ export function Header() {
               </span>
             </Link>
             <div className="hidden md:flex items-center gap-6">
-              {NAV_LINKS.map((link) =>
-                link.external ? (
+              {NAV_LINKS.map((link) => {
+                const isActive = !link.external && pathname.startsWith(link.href);
+                return link.external ? (
                   <a
                     key={link.label}
                     href={link.href}
@@ -161,12 +164,17 @@ export function Header() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-sm text-stone-500 hover:text-stone-200 transition-colors"
+                    className={cn(
+                      "text-sm transition-colors",
+                      isActive
+                        ? "text-stone-200"
+                        : "text-stone-500 hover:text-stone-200",
+                    )}
                   >
                     {link.label}
                   </Link>
-                ),
-              )}
+                );
+              })}
             </div>
           </div>
           <div className="flex items-center gap-4">

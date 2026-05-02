@@ -80,7 +80,7 @@ function PlatformInstall() {
         <div className="space-y-3">
           <button
             onClick={copy}
-            className="group w-full inline-flex items-center justify-center gap-3 rounded-lg border border-sand-700/10 bg-ink-800/50 px-4 py-3 font-mono text-sm transition-all hover:border-sand-600/20 hover:bg-ink-700/50 cursor-copy"
+            className="group w-full inline-flex items-center justify-center gap-3 rounded-lg border border-sand-700/10 bg-ink-800/50 px-4 py-3 font-mono text-sm transition-all hover:border-sand-600/20 hover:bg-ink-700/50 hover:shadow-[0_0_24px_-4px_rgba(184,148,78,0.15)] cursor-copy"
           >
             <span className="text-sand-500 select-none">$</span>
             <code className="text-stone-400">{installCommand}</code>
@@ -216,6 +216,20 @@ export function Hero() {
               />
             </motion.div>
           </AnimatePresence>
+        </div>
+        <div className="flex items-center justify-center gap-1.5 mt-5">
+          {heroImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentImage(i)}
+              aria-label={`Screenshot ${i + 1}`}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                i === currentImage
+                  ? "bg-sand-500 scale-110"
+                  : "bg-stone-700 hover:bg-stone-500"
+              }`}
+            />
+          ))}
         </div>
       </motion.div>
     </section>
