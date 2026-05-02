@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Kalam } from "next/font/google";
+import { Outfit, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -12,40 +12,35 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const kalam = Kalam({
-  variable: "--font-kalam",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+
 
 export const metadata: Metadata = {
-  title: "Vicinae - The everything launcher for Linux",
+  title: "Vicinae — A launcher for Linux",
   description:
-    "Launch apps, search files, manage your clipboard, run calculations, and so much more. Extend it with React & TypeScript.",
+    "A native, keyboard-driven launcher for Linux. Search, launch, and extend your desktop.",
   keywords: [
     "linux",
     "launcher",
     "productivity",
     "open source",
     "extensions",
-    "raycast",
     "wayland",
     "x11",
   ],
-  authors: [{ name: "Vicinae Team" }],
+  authors: [{ name: "Vicinae" }],
   openGraph: {
-    title: "Vicinae - The everything launcher for Linux",
+    title: "Vicinae — A launcher for Linux",
     description:
-      "Launch apps, search files, manage your clipboard, run calculations, and so much more. Extend it with React & TypeScript.",
+      "A native, keyboard-driven launcher for Linux. Search, launch, and extend your desktop.",
     url: "https://vicinae.com",
     siteName: "Vicinae",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vicinae - The everything launcher for Linux",
+    title: "Vicinae — A launcher for Linux",
     description:
-      "Launch apps, search files, manage your clipboard, run calculations, and so much more. Extend it with React & TypeScript.",
+      "A native, keyboard-driven launcher for Linux. Search, launch, and extend your desktop.",
   },
 };
 
@@ -56,9 +51,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth dark">
-      <head></head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${kalam.variable} font-sans antialiased bg-white dark:bg-[#121212] text-zinc-900 dark:text-[#E8E6E1]`}
+        className={`${outfit.variable} ${geistMono.variable} font-sans antialiased bg-ink-900 text-stone-200 grain`}
       >
         {children}
       </body>

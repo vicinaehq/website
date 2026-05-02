@@ -8,8 +8,6 @@ export const EXTERNAL_LINKS = {
 };
 
 export const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  { label: "Extensions", href: "#extensions" },
-  { label: "Community", href: "#community" },
+  { label: "Extensions", href: "/extensions" },
   { label: "Docs", href: EXTERNAL_LINKS.docs, external: true },
 ];
