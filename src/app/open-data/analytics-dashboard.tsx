@@ -74,7 +74,7 @@ const BREAKDOWN_TO_FILTER: Partial<Record<BreakdownKey, string>> = {
 	screenBuckets: "screen",
 };
 
-const GRANULARITIES: Granularity[] = ["daily", "weekly", "monthly", "yearly"];
+const GRANULARITIES: Granularity[] = ["daily", "weekly"];
 
 const PRESETS: { label: string; days: number }[] = [
 	{ label: "2w", days: 14 },
