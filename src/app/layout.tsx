@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  title: "Vicinae — A launcher for Linux",
+  title: "Vicinae - A focused launcher for your desktop",
   description:
-    "A native, keyboard-driven launcher for Linux. Search, launch, and extend your desktop.",
+    "A focused launcher for your desktop - native, fast, extensible.",
   keywords: [
     "linux",
     "launcher",
@@ -29,18 +29,18 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Vicinae" }],
   openGraph: {
-    title: "Vicinae — A launcher for Linux",
+    title: "Vicinae - A focused launcher for your desktop",
     description:
-      "A native, keyboard-driven launcher for Linux. Search, launch, and extend your desktop.",
+      "A focused launcher for your desktop - native, fast, extensible.",
     url: "https://vicinae.com",
     siteName: "Vicinae",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vicinae — A launcher for Linux",
+    title: "Vicinae - A focused launcher for your desktop",
     description:
-      "A native, keyboard-driven launcher for Linux. Search, launch, and extend your desktop.",
+      "A focused launcher for your desktop - native, fast, extensible.",
   },
 };
 

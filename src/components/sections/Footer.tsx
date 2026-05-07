@@ -23,6 +23,14 @@ export function Footer() {
   return (
     <footer className="py-8 border-t border-sand-700/8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-center gap-4 mb-3 text-xs">
+          <a
+            href="/open-data"
+            className="text-stone-600 hover:text-stone-300 transition-colors"
+          >
+            Open Data
+          </a>
+        </div>
         <p className="text-sm text-stone-600 text-center">
           Made with{" "}
           <span className="text-sand-500" aria-label="love">
