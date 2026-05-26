@@ -9,5 +9,6 @@ export const EXTERNAL_LINKS = {
 
 export const NAV_LINKS = [
   { label: "Extensions", href: "/extensions" },
+  { label: "Posts", href: "/posts" },
   { label: "Docs", href: EXTERNAL_LINKS.docs, external: true },
 ];

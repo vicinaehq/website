@@ -79,4 +79,4 @@ export default function MyExtension() {
   );
 }`;
 
-export const installCommand = "curl -fsSL https://vicinae.com/install | sh";
+export const installCommand = "curl -fsSL https://vicinae.com/install | bash";
