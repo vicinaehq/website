@@ -10,12 +10,22 @@ export const EXTERNAL_LINKS = {
 
 export const SPONSOR_TIERS = [
   {
+    tier: "Gold",
+    sponsors: [
+      {
+        name: "Depot",
+        href: "https://depot.dev/?utm_source=vicinae&utm_medium=readme",
+        logo: "/images/depot.png",
+      },
+    ],
+  },
+  {
     tier: "Silver",
     sponsors: [
       {
         name: "CodeRabbit",
         href: "https://coderabbit.link/vicinaehq",
-        logo: "/images/coderabbit.png",
+        logo: "/images/coderabbit.svg",
       },
     ],
   },

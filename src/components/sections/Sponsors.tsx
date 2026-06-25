@@ -2,7 +2,6 @@
 
 import { EXTERNAL_LINKS, SPONSOR_TIERS } from "@/lib/constants";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const TIER_COLORS: Record<string, string> = {
   Diamond: "text-sky-300",
@@ -48,18 +47,14 @@ export function Sponsors() {
                       href={sponsor.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 rounded-xl border border-sand-700/10 bg-ink-800/40 px-6 py-4 transition-all hover:border-sand-600/18 hover:bg-ink-700/50"
+                      className="inline-flex items-center justify-center px-6 py-4 transition-opacity hover:opacity-80"
                     >
-                      <Image
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={sponsor.logo}
-                        alt={`${sponsor.name} logo`}
-                        width={36}
-                        height={36}
-                        className="rounded-md"
+                        alt={sponsor.name}
+                        className="h-7 w-auto"
                       />
-                      <span className="text-base text-stone-200">
-                        {sponsor.name}
-                      </span>
                     </a>
                   ))}
                 </div>

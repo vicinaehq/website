@@ -2,12 +2,16 @@
 
 import { SPONSOR_TIERS } from "@/lib/constants";
 import { CONTRIBUTORS_URL } from "@/lib/github";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const FOOTER_SPONSORS = SPONSOR_TIERS.flatMap((tier) =>
-  tier.sponsors.map((sponsor) => ({ ...sponsor, tier: tier.tier })),
-);
+const HAS_SPONSORS = SPONSOR_TIERS.some((tier) => tier.sponsors.length > 0);
+
+const TIER_LOGO_HEIGHT: Record<string, string> = {
+  Diamond: "h-7",
+  Gold: "h-6",
+  Silver: "h-5",
+  Bronze: "h-4",
+};
 
 export function Footer() {
   const [contributorCount, setContributorCount] = useState(0);
@@ -29,31 +33,36 @@ export function Footer() {
   return (
     <footer className="py-8 border-t border-sand-700/8">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-        {FOOTER_SPONSORS.length > 0 && (
-          <div className="mb-6 flex flex-col items-center gap-2">
+        {HAS_SPONSORS && (
+          <div className="mb-6 flex flex-col items-center gap-4">
             <span className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-stone-600">
               Sponsored by
             </span>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              {FOOTER_SPONSORS.map((sponsor) => (
-                <a
-                  key={sponsor.name}
-                  href={sponsor.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-stone-500 transition-colors hover:text-stone-300"
+            {SPONSOR_TIERS.map((tier) =>
+              tier.sponsors.length > 0 ? (
+                <div
+                  key={tier.tier}
+                  className="flex flex-wrap items-center justify-center gap-6"
                 >
-                  <Image
-                    src={sponsor.logo}
-                    alt={`${sponsor.name} logo`}
-                    width={20}
-                    height={20}
-                    className="rounded"
-                  />
-                  {sponsor.name}
-                </a>
-              ))}
-            </div>
+                  {tier.sponsors.map((sponsor) => (
+                    <a
+                      key={sponsor.name}
+                      href={sponsor.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center transition-opacity hover:opacity-80"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        className={`${TIER_LOGO_HEIGHT[tier.tier] ?? "h-5"} w-auto`}
+                      />
+                    </a>
+                  ))}
+                </div>
+              ) : null,
+            )}
           </div>
         )}
         <div className="flex justify-center gap-4 mb-3 text-xs">
