@@ -124,7 +124,7 @@ export default async function ExtensionPage({ params }: Props) {
   return (
     <>
       <Header />
-      <main className="pt-14 min-h-screen">
+      <main className="pt-14 flex-1">
         <ExtensionDetail extension={ext} readme={readme} />
       </main>
     </>

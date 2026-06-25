@@ -5,7 +5,21 @@ export const EXTERNAL_LINKS = {
   extensions: "https://github.com/vicinaehq/extensions",
   apiReference: "https://docs.vicinae.com/api-reference",
   installGuide: "https://docs.vicinae.com/getting-started/installation",
+  sponsor: "https://github.com/sponsors/vicinaehq",
 };
+
+export const SPONSOR_TIERS = [
+  {
+    tier: "Silver",
+    sponsors: [
+      {
+        name: "CodeRabbit",
+        href: "https://coderabbit.link/vicinaehq",
+        logo: "/images/coderabbit.png",
+      },
+    ],
+  },
+];
 
 export const NAV_LINKS = [
   { label: "Extensions", href: "/extensions" },

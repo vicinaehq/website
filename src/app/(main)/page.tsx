@@ -5,7 +5,7 @@ import {
 	BuiltInModules,
 	ExtensionShowcase,
 	Community,
-	Footer,
+	Sponsors,
 } from "@/components/sections";
 
 function SectionDivider() {
@@ -18,7 +18,7 @@ export default function Home() {
 	return (
 		<>
 			<Header />
-			<main>
+			<main className="flex-1">
 				<Hero />
 				<SectionDivider />
 				<Features />
@@ -28,8 +28,9 @@ export default function Home() {
 				<ExtensionShowcase />
 				<SectionDivider />
 				<Community />
+				<SectionDivider />
+				<Sponsors />
 			</main>
-			<Footer />
 		</>
 	);
 }

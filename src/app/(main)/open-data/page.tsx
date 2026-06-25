@@ -18,7 +18,7 @@ export default function DataPage() {
   return (
     <>
       <Header />
-      <main className="pt-14 min-h-screen">
+      <main className="pt-14 flex-1">
         <Suspense
           fallback={
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">

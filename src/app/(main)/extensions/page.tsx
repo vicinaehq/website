@@ -27,7 +27,7 @@ export default async function ExtensionsPage() {
   return (
     <>
       <Header />
-      <main className="pt-14 min-h-screen">
+      <main className="pt-14 flex-1">
         <ExtensionStore extensions={extensions} />
       </main>
     </>
