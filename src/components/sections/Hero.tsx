@@ -19,6 +19,9 @@ const heroImages = [
 
 type Platform = "linux" | "macos" | "windows";
 
+const dmgDownloadUrl =
+  "https://github.com/vicinaehq/vicinae/releases/latest/download/Vicinae.dmg";
+
 function TuxIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -47,6 +50,15 @@ function PlatformInstall() {
   const [platform, setPlatform] = useState<Platform>("linux");
   const [copied, setCopied] = useState(false);
 
+  useEffect(() => {
+    // navigator is unavailable during SSR, so platform detection has to run
+    // after hydration rather than in the initial state.
+    if (/Mac/i.test(navigator.userAgent)) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setPlatform("macos");
+    }
+  }, []);
+
   const copy = async () => {
     await navigator.clipboard.writeText(installCommand);
     setCopied(true);
@@ -66,7 +78,7 @@ function PlatformInstall() {
             onClick={() => setPlatform(p.id)}
             className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs transition-all cursor-pointer ${
               platform === p.id
-                ? "bg-sand-500 text-ink-900 font-medium shadow-[0_0_16px_-2px_rgba(184,148,78,0.25)]"
+                ? "bg-sand-500 text-ink-900 font-medium"
                 : "text-stone-500 hover:text-stone-300 hover:bg-ink-700/50"
             }`}
           >
@@ -80,7 +92,7 @@ function PlatformInstall() {
         <div className="space-y-3">
           <button
             onClick={copy}
-            className="group w-full inline-flex items-center justify-center gap-3 rounded-lg border border-sand-700/10 bg-ink-800/50 px-4 py-3 font-mono text-sm transition-all hover:border-sand-600/20 hover:bg-ink-700/50 hover:shadow-[0_0_24px_-4px_rgba(184,148,78,0.15)] cursor-copy"
+            className="group w-full inline-flex items-center justify-center gap-3 rounded-lg border border-sand-700/10 bg-ink-800/50 px-4 py-3 font-mono text-sm transition-all hover:border-sand-600/20 hover:bg-ink-700/50 cursor-copy"
           >
             <span className="text-sand-500 select-none">$</span>
             <code className="text-stone-400">{installCommand}</code>
@@ -108,17 +120,44 @@ function PlatformInstall() {
             </a>
           </p>
         </div>
+      ) : platform === "macos" ? (
+        <div className="space-y-3">
+          <a
+            href={dmgDownloadUrl}
+            className="group w-full inline-flex items-center justify-center gap-2.5 rounded-lg border border-sand-700/10 bg-ink-800/50 px-4 py-3 text-sm transition-all hover:border-sand-600/20 hover:bg-ink-700/50"
+          >
+            <span className="text-sand-500">
+              <AppleIcon />
+            </span>
+            <span className="text-stone-300">Download for macOS</span>
+            <span className="text-stone-600 text-xs">.dmg</span>
+            <span className="text-stone-600 group-hover:text-sand-500 transition-colors ml-auto">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" x2="12" y1="15" y2="3" />
+              </svg>
+            </span>
+          </a>
+          <p className="text-xs text-stone-600 text-center">
+            <a
+              href="https://github.com/vicinaehq/vicinae/releases/latest"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-stone-400 transition-colors"
+            >
+              All releases
+            </a>
+          </p>
+        </div>
       ) : (
         <div className="space-y-3">
           <div className="rounded-lg border border-sand-700/10 bg-ink-800/50 px-4 py-5 text-center space-y-2.5">
             <p className="text-sm text-stone-400">
-              {platform === "macos" ? "macOS" : "Windows"} support is not available yet.
+              Windows support is not available yet.
             </p>
             <a
-              href={platform === "macos"
-                ? "https://github.com/vicinaehq/vicinae/issues/1169"
-                : "https://github.com/vicinaehq/vicinae/issues/899"
-              }
+              href="https://github.com/vicinaehq/vicinae/issues/899"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs text-sand-400 hover:text-sand-300 transition-colors"
