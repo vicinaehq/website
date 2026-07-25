@@ -111,7 +111,7 @@ function PlatformInstall() {
           </button>
           <p className="text-xs text-stone-600 text-center">
             <a
-              href="https://docs.vicinae.com/install/repo"
+              href="https://docs.vicinae.com/install/linux#package-repositories"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-stone-400 transition-colors"
