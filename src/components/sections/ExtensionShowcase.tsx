@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export function ExtensionShowcase() {
   return (
-    <section id="extensions" className="py-24 sm:py-32 bg-ink-800/50">
+    <section id="extensions" className="overflow-x-clip py-24 sm:py-32 bg-ink-800/50">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 10 }}

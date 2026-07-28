@@ -31,7 +31,7 @@ const icons: Record<string, React.ReactNode> = {
 
 export function Features() {
   return (
-    <section id="features" className="relative py-24 sm:py-32">
+    <section id="features" className="relative overflow-x-clip py-24 sm:py-32">
       <div className="absolute inset-0 -z-10 bg-ink-800/50" />
       <div className="absolute inset-0 -z-10">
         <div

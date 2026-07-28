@@ -94,7 +94,7 @@ const icons: Record<string, React.ReactNode> = {
 
 export function BuiltInModules() {
   return (
-    <section className="py-24 sm:py-32">
+    <section className="overflow-x-clip py-24 sm:py-32">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <motion.h2
           initial={{ opacity: 0 }}
