@@ -67,7 +67,7 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group rounded-xl border border-sand-700/8 bg-ink-800/40 p-6 transition-all duration-300 hover:border-sand-600/18 hover:bg-ink-800/70 hover:shadow-lg hover:shadow-sand-600/[0.06]"
+              className="group rounded-xl border border-sand-700/8 bg-ink-800/40 p-6 transition-[background-color,border-color,box-shadow] duration-300 hover:border-sand-600/18 hover:bg-ink-800/70 hover:shadow-lg hover:shadow-sand-600/[0.06]"
             >
               <div className="w-10 h-10 rounded-lg bg-sand-600/12 flex items-center justify-center text-sand-400 transition-all group-hover:bg-sand-500/18 group-hover:shadow-[0_0_16px_-4px_rgba(184,148,78,0.2)]">
                 {icons[feature.icon]}
