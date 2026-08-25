@@ -1,21 +1,9 @@
 "use client";
 
 import { siteConfig, installCommand } from "@/data/landing";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
-const heroImages = [
-  "/images/screenshot-1.png",
-  "/images/screenshot-2.png",
-  "/images/screenshot-9.png",
-  "/images/screenshot-3.png",
-  "/images/screenshot-4.png",
-  "/images/screenshot-5.png",
-  "/images/screenshot-6.png",
-  "/images/screenshot-7.png",
-  "/images/screenshot-8.png",
-];
 
 type Platform = "linux" | "macos" | "windows";
 
@@ -176,15 +164,6 @@ function PlatformInstall() {
 }
 
 export function Hero() {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative pt-24 pb-12 sm:pt-32 sm:pb-16 overflow-hidden">
       <div className="absolute inset-0 -z-10">
@@ -232,43 +211,18 @@ export function Hero() {
         transition={{ duration: 0.8, delay: 0.4 }}
         className="mt-10 sm:mt-14 mx-auto max-w-3xl px-4 sm:px-6"
       >
-        <div className="relative aspect-[1249/787]">
+        <div className="relative aspect-[1249/784]">
           <div className="absolute inset-0 -z-10 scale-110">
             <div className="absolute inset-[10%] bg-sand-400/[0.04] rounded-full blur-[80px]" />
           </div>
-          <AnimatePresence>
-            <motion.div
-              key={currentImage}
-              initial={{ opacity: 0, scale: 0.97, filter: "blur(4px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 1.01, filter: "blur(4px)" }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-              className="absolute inset-0"
-            >
-              <Image
-                src={heroImages[currentImage]}
-                alt="Vicinae launcher screenshot"
-                fill
-                className="object-contain rounded-xl"
-                priority
-                quality={95}
-              />
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        <div className="flex items-center justify-center gap-1.5 mt-5">
-          {heroImages.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentImage(i)}
-              aria-label={`Screenshot ${i + 1}`}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                i === currentImage
-                  ? "bg-sand-500 scale-110"
-                  : "bg-stone-700 hover:bg-stone-500"
-              }`}
-            />
-          ))}
+          <Image
+            src="/images/hero-screenshot.png"
+            alt="Vicinae launcher screenshot"
+            fill
+            className="object-contain rounded-xl"
+            priority
+            quality={95}
+          />
         </div>
       </motion.div>
     </section>
